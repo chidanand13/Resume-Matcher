@@ -3,7 +3,7 @@
 An AI-powered app that analyzes resumes and matches them with job descriptions.
 
 🌐 Live Demo
-👉 https://your-app-name.streamlit.app
+👉 [Resume_Matcher.app](https://resume-matcher-gdsyz6qofhzixtxov3bbne.streamlit.app/)
 
 📸 Project Preview
 <img width="1600" height="897" alt="WhatsApp Image 2026-04-30 at 11 46 27 AM" src="https://github.com/user-attachments/assets/881665e0-2fc5-43b7-ae58-a69fc8f153ce" />
