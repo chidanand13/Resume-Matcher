@@ -8,9 +8,8 @@ st.set_page_config(page_title="AI Career Assistant")
 st.title("🧠 AI Resume Analyzer + Career Advisor")
 st.info("Upload or paste your resume to get job matches + career guidance 🚀")
 
-# -------------------------------
 # FILE UPLOAD
-# -------------------------------
+
 uploaded_file = st.file_uploader("Upload Resume (PDF or TXT)", type=["pdf", "txt"])
 
 resume = ""
@@ -30,14 +29,12 @@ resume_text = st.text_area("Or paste your resume here:", height=200)
 if resume_text:
     resume = resume_text
 
-# -------------------------------
 # JOB DATA
-# -------------------------------
+
 jobs_df = pd.read_csv("jobs.csv")
 
-# -------------------------------
 # CAREER SUGGESTION
-# -------------------------------
+
 def suggest_career(resume):
     text = resume.lower()
 
@@ -56,9 +53,8 @@ def suggest_career(resume):
     else:
         return "General Role"
 
-# -------------------------------
 # MAIN
-# -------------------------------
+
 if st.button("Analyze Resume"):
 
     if resume.strip() == "":
