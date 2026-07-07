@@ -2,18 +2,16 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# -------------------------------
 # NORMALIZE TEXT
-# -------------------------------
+
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9\s]', ' ', text)
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-# -------------------------------
-# SKILL SYNONYMS (VERY IMPORTANT)
-# -------------------------------
+# SKILL SYNONYMS 
+
 SKILL_MAP = {
     "machine learning": ["ml"],
     "powerbi": ["power bi", "power-bi"],
@@ -24,9 +22,8 @@ SKILL_MAP = {
     "sql": ["mysql", "postgresql"]
 }
 
-# -------------------------------
 # EXPAND TEXT WITH SYNONYMS
-# -------------------------------
+
 def expand_text(text):
     text = clean_text(text)
 
@@ -37,9 +34,8 @@ def expand_text(text):
 
     return text
 
-# -------------------------------
 # SKILLS
-# -------------------------------
+
 COMMON_SKILLS = {
     # Data
     "python","pandas","numpy","sql","machine learning","statistics",
@@ -58,9 +54,8 @@ COMMON_SKILLS = {
     "git","github"
 }
 
-# -------------------------------
 # EXTRACT SKILLS (SMART MATCHING)
-# -------------------------------
+
 def extract_skills(text):
     text = expand_text(text)
     found = set()
@@ -71,18 +66,16 @@ def extract_skills(text):
 
     return found
 
-# -------------------------------
 # MATCHED SKILLS
-# -------------------------------
+
 def get_matched_skills(resume, jd):
     return list(extract_skills(resume) & extract_skills(jd))
 
 def get_missing_skills(resume, jd):
     return list(extract_skills(jd) - extract_skills(resume))
 
-# -------------------------------
 # FINAL SCORING
-# -------------------------------
+
 def calculate_similarities(resume, job_list):
     results = []
 
